@@ -1,0 +1,473 @@
+{
+	"info": {
+		"_postman_id": "2f68ba01-fe3a-496b-8021-eeab03faa1be",
+		"name": "Milana QA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8766374"
+	},
+	"item": [
+		{
+			"name": "Case",
+			"item": [
+				{
+					"name": "Case SysID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify value in response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"476\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/Case/{{sysId}}",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"Case",
+								"{{sysId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Cases",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify value in response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"476\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var body = JSON.parse(responseBody);\r",
+									"    var count = body.content.length;\r",
+									"    console.log(count);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/AllCases",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"AllCases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AdvanceSearch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"wordsIncluded\": \"string\",\r\n  \"atleastOneWord\": \"string\",\r\n  \"beginsWith\": \"DCKTS\",\r\n  \"noneOfTheseWords\": \"string\",\r\n  \"contains\": \"string\",\r\n  \"filterValues\": [\r\n    {\r\n      \"filterType\": 0,\r\n      \"filterWith\": 0,\r\n      \"filterText\": \"string\"\r\n    }\r\n  ],\r\n  \"companyId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/AdvancedCaseSearch",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"AdvancedCaseSearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Case Information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify value in response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"23671708\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/CaseInformation?CaseId=23671708",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"CaseInformation"
+							],
+							"query": [
+								{
+									"key": "CaseId",
+									"value": "23671708",
+									"description": "Enter the case_sys_id Value Here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CaseFacts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify value in response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"23671708\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/CaseFacts?CaseId=23671708",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"CaseFacts"
+							],
+							"query": [
+								{
+									"key": "CaseId",
+									"value": "23671708",
+									"description": "Enter case_sys_id value here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CaseAttorneys",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/CaseAttorneys?CaseId=23671708&SearchText=\"attorney\"",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"CaseAttorneys"
+							],
+							"query": [
+								{
+									"key": "CaseId",
+									"value": "23671708",
+									"description": "Enter the case_sys_id value here"
+								},
+								{
+									"key": "SearchText",
+									"value": "\"attorney\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CaseActivity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify value in response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"ATTORNEY ADDED\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value in response body\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/CaseActivity?CaseSysId=23671708",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"CaseActivity"
+							],
+							"query": [
+								{
+									"key": "CaseSysId",
+									"value": "23671708"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CaseMatter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify the Status code value for 200\", () => {\r",
+									"  pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify value in response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"23428086\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify is_success value for true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.is_success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASEURL}}/api/Case/Matter/{{matterSysId}}",
+							"host": [
+								"{{BASEURL}}"
+							],
+							"path": [
+								"api",
+								"Case",
+								"Matter",
+								"{{matterSysId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
